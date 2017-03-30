@@ -1,0 +1,31 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="OnlinerTest" verbose="1">
+	<test name="Test Case #1" preserve-order="true" enabled="false">
+		<parameter name="login1" value="TestDobriy" />
+		<parameter name="password1" value="12345" />
+		<parameter name="login2" value="TestDobriy2" />
+		<parameter name="subject" value="test" />
+		<parameter name="message" value="Привет, это тестовое сообщение для курсового проекта сайта http://rutracker.org/. 27.03.2017. mage-wow@mail.ru" />
+		<classes>
+ 			<class name="com.dobriy.test.SendAndDeleteMessageTest" />
+        </classes>
+	</test>
+	<test name="Test Case #2" preserve-order="true" enabled="false">
+		<parameter name="login1" value="TestDobriy" />
+		<parameter name="password1" value="12345" />
+		<parameter name="message" value="Arcanum Of Steamworks and Magick Obscura" />
+		<classes>
+ 			<class name="com.dobriy.test.DownloadTorrent" />
+        </classes>
+	</test>
+	<test name="Test Case #3" preserve-order="true" enabled="true">
+		<parameter name="login1" value="TestDobriy" />
+		<parameter name="password1" value="12345" />
+		<parameter name="section" value="фильмы" />
+		<parameter name="period" value="последние 3 дня" />
+		<parameter name="section2" value="Фильмы 1991-2000" />
+		<classes>
+ 			<class name="com.dobriy.test.SearchTheme" />
+        </classes>
+	</test>
+</suite>
