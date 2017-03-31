@@ -43,23 +43,33 @@ public class Table extends BaseElement {
 
 	public WebElement getCell(final int intRow, final int intCol) {
 		if (sizeRow() > 0) {
-			return element.findElements(By.tagName("tr")).get(intRow).findElements(By.xpath(".//td|.//th")).get(intCol);
+			WebElement elem = element.findElements(By.tagName("tr")).get(intRow - 1)
+					.findElements(By.xpath(".//td|.//th")).get(intCol - 1);
+			browser.getDriver().executeScript("arguments[0].style.border='3px solid red'", elem);
+			return elem;
 		} else {
 			return null;
 		}
 	}
 
-	public Boolean findStringInCol(final int intCol, final String string) {
-		for (int i = 0; i <= sizeRow(); i++) {
-			if (getCell(i, intCol).getText().contains(string)) {
-				info("'" + getCell(i, intCol).getText() + "' is contains '" + string + "'");
-				return true;
-			} else {
-				info("'" + getCell(i, intCol).getText() + "' is not contains '" + string + "'");
+	public WebElement getCell(final String text) {
+		for (int i = 1; i <= sizeCol(); i++) {
+			WebElement elem = findStringInCol(i, text);
+			if (elem != null) {
+				return elem;
 			}
-			;
 		}
-		return false;
+		return null;
+	}
+
+	public WebElement findStringInCol(final int intCol, final String string) {
+		for (int i = 1; i <= sizeRow(); i++) {
+			WebElement elem = getCell(i, intCol);
+			if (elem.getText().contains(string)) {
+				return elem;
+			}
+		}
+		return null;
 	}
 
 	public int sizeRow() {
@@ -69,6 +79,6 @@ public class Table extends BaseElement {
 
 	public int sizeCol() {
 		waitForIsElementPresent();
-		return element.findElements(By.tagName("tr")).get(0).findElements(By.tagName("td")).size();
+		return element.findElements(By.tagName("tr")).get(1).findElements(By.tagName("td")).size();
 	}
 }

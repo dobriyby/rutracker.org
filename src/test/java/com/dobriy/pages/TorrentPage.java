@@ -19,17 +19,18 @@ public class TorrentPage extends BaseForm {
 
 	private Label lblTitle = new Label(By.xpath("//h1[@class='maintitle']"), "Title Labels");
 	private Button btnDownload = new Button(By.xpath("//a[contains(@class,'dl-link')]"), "Download Button");
+	private Button btnAnswer = new Button(By.xpath("//img[contains(@alt,'Ответить')]"), "Answer Button");
 
-	protected TorrentPage() {
-		super(By.xpath("//table[@class='forumline dl_list']"), "Torrent Page");
+	public TorrentPage() {
+		super(By.xpath("//img[contains(@alt,'Ответить')]"), "Torrent Page");
 	}
 
 	public void testTitle(final String title) {
 		try {
 			Assert.assertTrue(lblTitle.getText().contains(title));
-			info(lblTitle.getText() + " contains " + title);
+			info(lblTitle.getText() + " :: contains :: " + title);
 		} catch (Throwable e) {
-			fatal(lblTitle.getText() + " not contains " + title);
+			fatal(lblTitle.getText() + " :: not contains :: " + title);
 		}
 	}
 
@@ -52,6 +53,10 @@ public class TorrentPage extends BaseForm {
 			}
 		}
 
+	}
+
+	public void clickAnswer() {
+		btnAnswer.click();
 	}
 
 	@SuppressWarnings("rawtypes")

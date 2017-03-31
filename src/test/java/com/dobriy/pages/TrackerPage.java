@@ -10,12 +10,13 @@ import java.util.Locale;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
 
-import com.dobriy.page.elements.Header;
+import com.dobriy.pages.elements.Header;
 
 import webdriver.BaseForm;
 import webdriver.elements.Button;
@@ -35,6 +36,9 @@ public class TrackerPage extends BaseForm {
 	private Table tblTorrent = new Table(By.id("tor-tbl"), "Torrent Table");
 	private Label lblCountTorrents = new Label(By.xpath("//p[contains(text(),'Результатов поиска')]"),
 			"Size Torrents Lable");
+	private static final int TORRENT_COL = 4;
+	private static final int PERIOD_COL = 10;
+	private static final int SECTION_COL = 3;
 
 	private TextBox txbSectionSearch = new TextBox(By.id("fs-qs-input"), "Section Search TextBox");
 
@@ -74,8 +78,8 @@ public class TrackerPage extends BaseForm {
 
 	private void testCurPage() {
 		new Actions(browser.getDriver()).keyDown(Keys.CONTROL).keyDown(Keys.SHIFT).perform();
-		for (int i = 1; i <= (tblTorrent.sizeRow() - 2); i++) {
-			WebElement elem = tblTorrent.getCell(i, 3).findElement(By.xpath(".//a"));
+		for (int i = 2; i <= (tblTorrent.sizeRow() - 1); i++) {
+			WebElement elem = tblTorrent.getCell(i, TORRENT_COL).findElement(By.xpath(".//a"));
 			String title = elem.getText();
 			elem.click();
 			switchHandle();
@@ -109,6 +113,7 @@ public class TrackerPage extends BaseForm {
 
 	private void testSectionFilter(final String section) {
 		browser.getDriver().manage().timeouts().setScriptTimeout(15, TimeUnit.SECONDS);
+		((JavascriptExecutor) browser.getDriver()).executeScript("$('#fs-main').val([-1]);", "");
 		cmbSection.isPresent();
 		for (String st : cmbSection.getOptions()) {
 			if (st.contains("|-")) {
@@ -120,8 +125,8 @@ public class TrackerPage extends BaseForm {
 	}
 
 	public TrackerPage testListSection() {
-		for (int i = 1; i <= (tblTorrent.sizeRow() - 2); i++) {
-			String lineSection = tblTorrent.getCell(i, 2).findElement(By.xpath(".//a")).getText();
+		for (int i = 2; i <= (tblTorrent.sizeRow() - 1); i++) {
+			String lineSection = tblTorrent.getCell(i, SECTION_COL).findElement(By.xpath(".//a")).getText();
 			String curSection = cmbSection.getCheckedSection().replace("|-", "").trim();
 			Assert.assertEquals(lineSection, curSection);
 			info(lineSection + " :: equals :: " + curSection);
@@ -130,8 +135,8 @@ public class TrackerPage extends BaseForm {
 	}
 
 	public TrackerPage testListPeriod() {
-		for (int i = 1; i <= (tblTorrent.sizeRow() - 2); i++) {
-			String lineSection = tblTorrent.getCell(i, 9).findElement(By.xpath(".//p")).getText();
+		for (int i = 2; i <= (tblTorrent.sizeRow() - 1); i++) {
+			String lineSection = tblTorrent.getCell(i, PERIOD_COL).findElement(By.xpath(".//p")).getText();
 			long duration = durationDate(lineSection);
 			long curPeriod = 0;
 			switch (cmbPeriod.getCheckedSection()) {
@@ -139,8 +144,8 @@ public class TrackerPage extends BaseForm {
 				curPeriod = 3;
 				break;
 			}
-			Assert.assertTrue(duration<=curPeriod);
-			info(lineSection+" :: match :: "+cmbPeriod.getCheckedSection());
+			Assert.assertTrue(duration <= curPeriod);
+			info(lineSection + " :: match :: " + cmbPeriod.getCheckedSection());
 		}
 		return this;
 	}

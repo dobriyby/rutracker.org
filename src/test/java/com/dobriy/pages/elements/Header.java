@@ -1,4 +1,4 @@
-package com.dobriy.page.elements;
+package com.dobriy.pages.elements;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.CacheLookup;
@@ -59,6 +59,11 @@ public class Header extends BaseElement {
 	@Name(title = "Tracker Button")
 	@CacheLookup
 	private Button btnTracker;
+	
+	@FindBy(xpath = "//div[@id='main-nav']//b[contains(text(),'Поиск')]")
+	@Name(title = "Search Page Button")
+	@CacheLookup
+	private Button btnSearchPage;
 
 	private By loginLable = By.xpath("//div[contains(@class,'logged-in-as')]");
 
@@ -113,6 +118,10 @@ public class Header extends BaseElement {
 	
 	public void navigateTracker(){
 		btnTracker.click();
+	}
+	
+	public void navigateSearch(){
+		btnSearchPage.click();
 	}
 
 }

@@ -1,18 +1,10 @@
 package webdriver;
 
 import org.testng.ITestContext;
-import org.testng.Reporter;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
-import org.apache.commons.io.FileUtils;
-import org.openqa.selenium.*;
 
 import static org.testng.AssertJUnit.assertTrue;
-
-import java.io.File;
-import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 /**
  * BaseEntity
@@ -75,7 +67,6 @@ public abstract class BaseEntity {
 	 */
 	protected void warn(final String message) {
 		logger.warn(formatLogMsg(message));
-		makeScreenShot();
 	}
 
 	/**
@@ -86,7 +77,6 @@ public abstract class BaseEntity {
 	 */
 	protected void error(final String message) {
 		logger.error(formatLogMsg(message));
-		makeScreenShot();
 	}
 
 	/**
@@ -97,7 +87,6 @@ public abstract class BaseEntity {
 	 */
 	protected void fatal(final String message) {
 		logger.fatal(formatLogMsg(message));
-		makeScreenShot();
 		assertTrue(formatLogMsg(message), false);
 	}
 
@@ -200,18 +189,6 @@ public abstract class BaseEntity {
 	protected void logStep(final String info) {
 		logStep(stepNumber++);
 		logger.info(String.format("----==[ %1$s ]==----", info));
-	}
-
-	private void makeScreenShot() {
-		File screenShot = ((TakesScreenshot) browser.getDriver()).getScreenshotAs(OutputType.FILE);
-		String screenDate = new SimpleDateFormat("dd_MMM_yyyy__hh_mm_ssaa").format(new Date()) + ".png";
-		try {
-			FileUtils.copyFile(screenShot, new File("target/surefire-reports/screenshots/" + screenDate));
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-        Reporter.log("<a href='"+ screenShot.getAbsolutePath() + "'> <img src='"+ screenShot.getAbsolutePath() + "' height='100' width='100'/> </a>");
-
 	}
 
 }

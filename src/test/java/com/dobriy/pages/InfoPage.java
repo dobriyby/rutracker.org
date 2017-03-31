@@ -10,11 +10,11 @@ import webdriver.elements.Label;
 public class InfoPage extends BaseForm {
 
 	private Label lblInfo = new Label(By.xpath("//table[@class='forumline message']"), "Info Label");
-	private String successSend = "Ваше сообщение было отправлено";
-	private String failSend = "Ваше сообщение не отправлено";
-	private String confirmDelete = "Вы уверены, что хотите удалить эти сообщения?";
-	private String messagesDelete = "Выбранные сообщения были удалены";
-	private String messagesNotDelete = "Выбранные сообщения не удалены";
+	private static final String SUCCESS_SEND = "Ваше сообщение было отправлено";
+	private static final String FAIL_SEND = "Ваше сообщение не отправлено";
+	private static final String CONFIRM_DELETE = "Вы уверены, что хотите удалить эти сообщения?";
+	private static final String MESSAGES_DELETE = "Выбранные сообщения были удалены";
+	private static final String MESSAGES_NOT_DELETE = "Выбранные сообщения не удалены";
 	private Button bntOutBox = new Button(By.xpath("//a/b[text()='Исходящие']"), "OutBox Button");
 	private Button btnOk = new Button(By.name("confirm"), "OK Button");
 
@@ -24,19 +24,19 @@ public class InfoPage extends BaseForm {
 
 	public void isMessageSend() {
 		try {
-			Assert.assertTrue(lblInfo.getText().contains(successSend));
-			logger.info(successSend);
+			Assert.assertTrue(lblInfo.getText().contains(SUCCESS_SEND));
+			logger.info(SUCCESS_SEND);
 		} catch (Throwable e) {
-			logger.fatal(failSend);
+			logger.fatal(FAIL_SEND);
 		}
 	}
 
 	public void isMessagesDelete() {
 		try {
-			Assert.assertTrue(lblInfo.getText().contains(messagesDelete));
-			logger.info(messagesDelete);
+			Assert.assertTrue(lblInfo.getText().contains(MESSAGES_DELETE));
+			logger.info(MESSAGES_DELETE);
 		} catch (Throwable e) {
-			logger.fatal(messagesNotDelete);
+			logger.fatal(MESSAGES_NOT_DELETE);
 		}
 	}
 
@@ -45,7 +45,7 @@ public class InfoPage extends BaseForm {
 	}
 
 	public void isConfirmDeleteMessages() {
-		Assert.assertTrue(lblInfo.getText().contains(confirmDelete));
+		Assert.assertTrue(lblInfo.getText().contains(CONFIRM_DELETE));
 	}
 
 	public void navigateOutBox() {
