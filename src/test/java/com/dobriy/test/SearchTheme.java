@@ -43,6 +43,7 @@ public class SearchTheme extends BaseTest {
 
 		logStep();
 	    trackerPage.setPeriod(period);
+	    trackerPage.testSectionFilter(section);
 	    trackerPage.setSection(section2);
 	    trackerPage.search();
 	    trackerPage.testList("date and section");

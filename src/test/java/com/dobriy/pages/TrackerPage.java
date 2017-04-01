@@ -7,10 +7,8 @@ import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.Date;
 import java.util.Locale;
-import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -108,12 +106,9 @@ public class TrackerPage extends BaseForm {
 
 	public void setSectionSearch(final String section) {
 		txbSectionSearch.setText(section);
-		testSectionFilter(section);
 	}
 
-	private void testSectionFilter(final String section) {
-		browser.getDriver().manage().timeouts().setScriptTimeout(15, TimeUnit.SECONDS);
-		((JavascriptExecutor) browser.getDriver()).executeScript("$('#fs-main').val([-1]);", "");
+	public void testSectionFilter(final String section) {
 		cmbSection.isPresent();
 		for (String st : cmbSection.getOptions()) {
 			if (st.contains("|-")) {
