@@ -245,9 +245,9 @@
 				<artifactId>maven-surefire-plugin</artifactId>
 				<version>2.16</version>
 				<configuration>
-		<!--			<systemPropertyVariables>
-						<org.uncommons.reportng.escape-output>false</org.uncommons.reportng.escape-output>
-					</systemPropertyVariables> -->
+				<argLine>-Dfile.encoding=UTF-8</argLine>
+					<!-- <systemPropertyVariables> <org.uncommons.reportng.escape-output>false</org.uncommons.reportng.escape-output> 
+						</systemPropertyVariables> -->
 					<suiteXmlFiles>
 						<suiteXmlFile>src/test/resources/TestSuite.xml</suiteXmlFile>
 					</suiteXmlFiles>
