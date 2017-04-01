@@ -22,7 +22,7 @@ public class TorrentPage extends BaseForm {
 	private Button btnAnswer = new Button(By.xpath("//img[contains(@alt,'Ответить')]"), "Answer Button");
 
 	public TorrentPage() {
-		super(By.xpath("//img[contains(@alt,'Ответить')]"), "Torrent Page");
+		super(By.xpath("//table[@id='topic_main']"), "Torrent Page");
 	}
 
 	public void testTitle(final String title) {
