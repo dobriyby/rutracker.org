@@ -22,7 +22,7 @@ public class DownloadTorrent extends BaseTest {
 		this.password1 = password1;
 		this.message = message;
 	}
-
+	
 	@Override
 	public void runTest() {
 		MainPage mainPage = new MainPage();

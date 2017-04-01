@@ -1,41 +1,46 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 <suite name="OnlinerTest" verbose="1">
-	<test name="Test Case #1" preserve-order="true" enabled="false">
+	<listeners>
+		<listener class-name="webdriver.TestListener" />
+	</listeners>
+	<test name="Test Case #1" preserve-order="true" enabled="true">
 		<parameter name="login1" value="TestDobriy" />
 		<parameter name="password1" value="12345" />
 		<parameter name="login2" value="TestDobriy2" />
 		<parameter name="subject" value="test" />
-		<parameter name="message" value="Привет, это тестовое сообщение для курсового проекта сайта http://rutracker.org/. 27.03.2017. mage-wow@mail.ru" />
+		<parameter name="message"
+			value="Привет, это тестовое сообщение для курсового проекта сайта http://rutracker.org/. 27.03.2017. mage-wow@mail.ru" />
 		<classes>
- 			<class name="com.dobriy.test.SendAndDeleteMessageTest" />
-        </classes>
+			<class name="com.dobriy.test.SendAndDeleteMessageTest" />
+		</classes>
 	</test>
-	<test name="Test Case #2" preserve-order="true" enabled="false">
+	<test name="Test Case #2" preserve-order="true" enabled="true">
 		<parameter name="login1" value="TestDobriy" />
 		<parameter name="password1" value="12345" />
 		<parameter name="message" value="Arcanum Of Steamworks and Magick Obscura" />
 		<classes>
- 			<class name="com.dobriy.test.DownloadTorrent" />
-        </classes>
+			<class name="com.dobriy.test.DownloadTorrent" />
+		</classes>
 	</test>
-	<test name="Test Case #3" preserve-order="true" enabled="false">
+	<test name="Test Case #3" preserve-order="true" enabled="true">
 		<parameter name="login1" value="TestDobriy" />
 		<parameter name="password1" value="12345" />
 		<parameter name="section" value="фильмы" />
 		<parameter name="period" value="последние 3 дня" />
 		<parameter name="section2" value="Фильмы 1991-2000" />
 		<classes>
- 			<class name="com.dobriy.test.SearchTheme" />
-        </classes>
+			<class name="com.dobriy.test.SearchTheme" />
+		</classes>
 	</test>
-	<test name="Test Case #4" preserve-order="true" enabled="false">
+	<test name="Test Case #4" preserve-order="true" enabled="true">
+
 		<parameter name="login" value="TestDobriy" />
 		<parameter name="password" value="12345" />
 		<parameter name="section1" value="Аудиокниги на иностранных языках" />
 		<parameter name="section2" value="Аудиокниги на английском языке" />
 		<classes>
- 			<class name="com.dobriy.test.WritePostAuthorization" />
-        </classes>
+			<class name="com.dobriy.test.WritePostAuthorization" />
+		</classes>
 	</test>
 	<test name="Test Case #5" preserve-order="true" enabled="true">
 		<parameter name="login" value="TestDobriy" />
@@ -43,7 +48,7 @@
 		<parameter name="searchName" value="Mr. Lameroff" />
 		<parameter name="type" value="Сообщения" />
 		<classes>
- 			<class name="com.dobriy.test.SearchPersonAndSend" />
-        </classes>
+			<class name="com.dobriy.test.SearchPersonAndSend" />
+		</classes>
 	</test>
 </suite>
