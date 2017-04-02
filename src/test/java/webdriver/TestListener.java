@@ -28,8 +28,8 @@ public class TestListener extends TestListenerAdapter {
 	 */
 	private void makeScreenshot(ITestResult result){
 		Screenshot aShot =new AShot().shootingStrategy(ShootingStrategies.viewportPasting(100)).takeScreenshot(Browser.getInstance().getDriver());
-		String url =".//surefire-reports/screenshots/"+LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH-mm-ss"))+".png";
-		new File(".//surefire-reports/screenshots/").mkdirs();
+		String url =".//surefire-reports/html/screenshots/"+LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH-mm-ss"))+".png";
+		new File(".//surefire-reports/html/screenshots/").mkdirs();
 		File file = new File(url);
 		try {
 			ImageIO.write(aShot.getImage(), "PNG", file);
