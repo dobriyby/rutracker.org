@@ -21,6 +21,9 @@ public class ListThemePage extends BaseForm {
 		super(By.xpath("//img[contains(@alt,'Новая тема')]"), "List Theme Page");
 	}
 
+	/*
+	 * Проверка title страницы
+	 */
 	public void testTitle(final String title) {
 		assertEquals(lblTitle.getText(), title);
 		info("Title '" + this.title + "' :: is correct");
@@ -30,6 +33,9 @@ public class ListThemePage extends BaseForm {
 		tblListSection.findStringInCol(THEME_COL, section).findElement(By.tagName("a")).click();
 	}
 
+	/*
+	 * Переход на страницу torrent'а и проверка title'а
+	 */
 	public TorrentPage navigaetToTheme(final int themeId) {
 		WebElement elem = tblListTheme.getCell(THEME_ROW).findElements(By.xpath(".//parent::tr/following-sibling::tr"))
 				.get(themeId - 1).findElement(By.xpath(".//a[contains(@id,'tt')]"));

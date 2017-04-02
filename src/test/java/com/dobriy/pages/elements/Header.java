@@ -13,6 +13,9 @@ import webdriver.elements.Button;
 import webdriver.elements.Label;
 import webdriver.elements.TextBox;
 
+/*
+ * Класс отвечающий за элементы и функционал 'шапки' сайта, которая присутствует на каждой странице
+ */
 public class Header extends BaseElement {
 
 	@FindBy(xpath = "//span[@class='a-like bold']")
@@ -39,27 +42,27 @@ public class Header extends BaseElement {
 	@Name(title = "PM Button")
 	@CacheLookup
 	private Button bntMessage;
-	
+
 	@FindBy(id = "search-text")
 	@Name(title = "Search TextBox")
 	@CacheLookup
 	private TextBox txbSearch;
-	
+
 	@FindBy(id = "search-submit")
 	@Name(title = "Search Button")
 	@CacheLookup
 	private Button btnSearch;
-	
+
 	@FindBy(xpath = "//a[@class='logged-in-as-uname']/following-sibling::a")
 	@Name(title = "Exit Button")
 	@CacheLookup
 	private Button btnExit;
-	
+
 	@FindBy(xpath = "//div[@id='main-nav']//b[contains(text(),'Трекер')]")
 	@Name(title = "Tracker Button")
 	@CacheLookup
 	private Button btnTracker;
-	
+
 	@FindBy(xpath = "//div[@id='main-nav']//b[contains(text(),'Поиск')]")
 	@Name(title = "Search Page Button")
 	@CacheLookup
@@ -99,28 +102,28 @@ public class Header extends BaseElement {
 		}
 
 	}
-	
-	public void navigatePM(){
+
+	public void navigatePM() {
 		bntMessage.click();
 	}
-	
-	public void sendSearch(final String message){
+
+	public void sendSearch(final String message) {
 		txbSearch.setText(message);
 	}
-	
-	public void search(){
+
+	public void search() {
 		btnSearch.click();
 	}
-	
-	public void exit(){
+
+	public void exit() {
 		btnExit.click();
 	}
-	
-	public void navigateTracker(){
+
+	public void navigateTracker() {
 		btnTracker.click();
 	}
-	
-	public void navigateSearch(){
+
+	public void navigateSearch() {
 		btnSearchPage.click();
 	}
 

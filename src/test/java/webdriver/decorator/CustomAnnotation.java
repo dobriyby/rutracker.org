@@ -4,6 +4,9 @@ import java.lang.reflect.Field;
 
 import org.openqa.selenium.support.pagefactory.Annotations;
 
+/*
+ * Расширенный класс Annotation для работы с дополнительной аннотацией Name.class 
+ */
 public class CustomAnnotation extends Annotations{
 	private Field field;
 

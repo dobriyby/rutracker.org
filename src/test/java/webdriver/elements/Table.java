@@ -27,7 +27,7 @@ public class Table extends BaseElement {
 
 	public List<WebElement> getRow(final int intRow) {
 		if (sizeRow() > 0) {
-			return element.findElements(By.tagName("tr")).get(intRow).findElements(By.tagName("td"));
+			return getElement().findElements(By.tagName("tr")).get(intRow).findElements(By.tagName("td"));
 		} else {
 			return null;
 		}
@@ -35,7 +35,7 @@ public class Table extends BaseElement {
 
 	public List<WebElement> getRows() {
 		if (sizeRow() > 0) {
-			return element.findElements(By.tagName("tr"));
+			return getElement().findElements(By.tagName("tr"));
 		} else {
 			return null;
 		}
@@ -43,7 +43,7 @@ public class Table extends BaseElement {
 
 	public WebElement getCell(final int intRow, final int intCol) {
 		if (sizeRow() > 0) {
-			WebElement elem = element.findElements(By.tagName("tr")).get(intRow - 1)
+			WebElement elem = getElement().findElements(By.tagName("tr")).get(intRow - 1)
 					.findElements(By.xpath(".//td|.//th")).get(intCol - 1);
 			browser.getDriver().executeScript("arguments[0].style.border='3px solid red'", elem);
 			return elem;
@@ -74,11 +74,11 @@ public class Table extends BaseElement {
 
 	public int sizeRow() {
 		waitForIsElementPresent();
-		return element.findElements(By.tagName("tr")).size();
+		return getElement().findElements(By.tagName("tr")).size();
 	}
 
 	public int sizeCol() {
 		waitForIsElementPresent();
-		return element.findElements(By.tagName("tr")).get(1).findElements(By.tagName("td")).size();
+		return getElement().findElements(By.tagName("tr")).get(1).findElements(By.tagName("td")).size();
 	}
 }

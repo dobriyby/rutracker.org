@@ -48,6 +48,12 @@ public class TrackerPage extends BaseForm {
 		assertEquals(txbTitleSearch.getValue(), message);
 	}
 
+	/**
+	 * Запуск теста списка торрентов
+	 * 
+	 * @param type
+	 *            Тип теста
+	 */
 	public void testList(final String type) {
 		if (tblTorrent.sizeRow() > 0) {
 			int curPage = 1;
@@ -74,6 +80,12 @@ public class TrackerPage extends BaseForm {
 
 	}
 
+	/*
+	 * Тест на скачивание торрента файла : открытие страницы на новой вкладке;
+	 * cмена фокуса на новую вкладку; теста title и тест torrent файла; проверка
+	 * файла соответствия требованию; закрытие вкладки; смена фокуса; отжимание
+	 * кнопок, чтобы они не повлияли на следующие действия на странице
+	 */
 	private void testCurPage() {
 		new Actions(browser.getDriver()).keyDown(Keys.CONTROL).keyDown(Keys.SHIFT).perform();
 		for (int i = 2; i <= (tblTorrent.sizeRow() - 1); i++) {
@@ -92,12 +104,18 @@ public class TrackerPage extends BaseForm {
 		new Actions(browser.getDriver()).keyUp(Keys.CONTROL).keyUp(Keys.SHIFT).perform();
 	}
 
+	/*
+	 * Смена фокуса на новую вкладку
+	 */
 	private void switchHandle() {
 		for (String winHandle : browser.getDriver().getWindowHandles()) {
 			browser.getDriver().switchTo().window(winHandle);
 		}
 	}
 
+	/*
+	 * Переход на следующую страницу
+	 */
 	public void nextPage() {
 		if (btnNext.isPresent()) {
 			btnNext.click();
@@ -108,6 +126,9 @@ public class TrackerPage extends BaseForm {
 		txbSectionSearch.setText(section);
 	}
 
+	/*
+	 * Тест списка разделов сайта
+	 */
 	public void testSectionFilter(final String section) {
 		cmbSection.isPresent();
 		for (String st : cmbSection.getOptions()) {
@@ -119,6 +140,9 @@ public class TrackerPage extends BaseForm {
 		info("Section list is correct");
 	}
 
+	/*
+	 * Тест соответствия списка найденных torrent тем выбранному разделу
+	 */
 	public TrackerPage testListSection() {
 		for (int i = 2; i <= (tblTorrent.sizeRow() - 1); i++) {
 			String lineSection = tblTorrent.getCell(i, SECTION_COL).findElement(By.xpath(".//a")).getText();
@@ -129,6 +153,9 @@ public class TrackerPage extends BaseForm {
 		return this;
 	}
 
+	/*
+	 * Тест соответствия списка найденных torrent тем выбранному периоду
+	 */
 	public TrackerPage testListPeriod() {
 		for (int i = 2; i <= (tblTorrent.sizeRow() - 1); i++) {
 			String lineSection = tblTorrent.getCell(i, PERIOD_COL).findElement(By.xpath(".//p")).getText();
@@ -145,6 +172,9 @@ public class TrackerPage extends BaseForm {
 		return this;
 	}
 
+	/*
+	 * Расчет интервала между датой lineSection и текущей датой
+	 */
 	private long durationDate(final String lineSection) {
 		Date date = null;
 		try {

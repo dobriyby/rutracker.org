@@ -16,7 +16,10 @@ public class LoginPage extends BaseForm {
 	public LoginPage() {
 		super(By.xpath("//h1[@class='pagetitle' and text()='Вход']"), "Login Page");
 	}
-
+	
+	/*
+	 * Проверка наличия Login Form
+	 */
 	public void isLoginForm() {
 		try {
 			Assert.assertTrue(txbLogin.isPresent());

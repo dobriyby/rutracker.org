@@ -7,6 +7,9 @@ import org.openqa.selenium.SearchContext;
 import org.openqa.selenium.support.pagefactory.DefaultElementLocatorFactory;
 import org.openqa.selenium.support.pagefactory.DefaultFieldDecorator;
 
+/*
+ * Декоратор для динамического получения локатора и тайтла элемента
+ */
 public class CustomFieldDecorator extends DefaultFieldDecorator {
 
 	public CustomFieldDecorator(final SearchContext searchContext) {

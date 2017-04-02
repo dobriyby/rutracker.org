@@ -31,14 +31,14 @@ public class ComboBox extends BaseElement {
 
 	public void setOption(final String option) {
 		waitForIsElementPresent();
-		browser.getDriver().executeScript("arguments[0].style.border='3px solid red'", element);
-		new Select(element).selectByVisibleText(option);
+		browser.getDriver().executeScript("arguments[0].style.border='3px solid red'", getElement());
+		new Select(getElement()).selectByVisibleText(option);
 	}
 	
 	public void setPartOption(final String option) {
 		waitForIsElementPresent();
-		browser.getDriver().executeScript("arguments[0].style.border='3px solid red'", element);
-		for(WebElement elem:element.findElements(By.tagName("option"))){
+		browser.getDriver().executeScript("arguments[0].style.border='3px solid red'", getElement());
+		for(WebElement elem:getElement().findElements(By.tagName("option"))){
 			if (elem.getText().contains(option)){
 				elem.click();
 				info("select :: "+elem.getText());
@@ -57,9 +57,9 @@ public class ComboBox extends BaseElement {
 
 	public List<String> getOptions() {
 		waitForIsElementPresent();
-		browser.getDriver().executeScript("arguments[0].style.border='3px solid red'", element);
+		browser.getDriver().executeScript("arguments[0].style.border='3px solid red'", getElement());
 		List<String> listOption = new ArrayList<String>();
-		for (WebElement elem : new Select(element).getOptions()) {
+		for (WebElement elem : new Select(getElement()).getOptions()) {
 			listOption.add(elem.getText());
 		}
 		return listOption;
@@ -67,6 +67,6 @@ public class ComboBox extends BaseElement {
 	
 	public String getCheckedSection(){
 		waitForIsElementPresent();
-		return new Select(element).getFirstSelectedOption().getText();
+		return new Select(getElement()).getFirstSelectedOption().getText();
 	}
 }

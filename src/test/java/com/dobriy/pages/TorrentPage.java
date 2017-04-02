@@ -33,7 +33,10 @@ public class TorrentPage extends BaseForm {
 			fatal(lblTitle.getText() + " :: not contains :: " + title);
 		}
 	}
-
+	
+	/*
+	 * Запуск теста скачивания торрент файла; получения из файла строки с описанием торрента и сравнение с url страницы
+	 */
 	public void testDownload() {
 		String url = browser.getDriver().getCurrentUrl();
 		InputStream in = null;
@@ -58,7 +61,10 @@ public class TorrentPage extends BaseForm {
 	public void clickAnswer() {
 		btnAnswer.click();
 	}
-
+	
+	/*
+	 * Декодирование файла со stream'а и получение строки с описанием("comment")
+	 */
 	@SuppressWarnings("rawtypes")
 	private String decodeTorrent(InputStream in) throws IOException {
 		BDecoder decoder = new BDecoder();

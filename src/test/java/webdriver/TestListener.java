@@ -22,7 +22,10 @@ public class TestListener extends TestListenerAdapter {
 	public void onTestFailure(ITestResult result){
 		makeScreenshot(result);
 	}
-	
+
+	/*
+	 * Получение скриншота всей страницы, сохранение его в папку с репортом и добавление ссылки в HTML Report
+	 */
 	private void makeScreenshot(ITestResult result){
 		Screenshot aShot =new AShot().shootingStrategy(ShootingStrategies.viewportPasting(100)).takeScreenshot(Browser.getInstance().getDriver());
 		String url =".//surefire-reports/screenshots/"+LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH-mm-ss"))+".png";

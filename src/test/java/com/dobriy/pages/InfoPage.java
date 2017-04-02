@@ -7,6 +7,9 @@ import webdriver.BaseForm;
 import webdriver.elements.Button;
 import webdriver.elements.Label;
 
+/*
+ * Класс-куртизантка, служит общим классом для всех страниц с информацией/предупреждении при выполнении действий
+ */
 public class InfoPage extends BaseForm {
 
 	private Label lblInfo = new Label(By.xpath("//table[@class='forumline message']"), "Info Label");
@@ -22,6 +25,9 @@ public class InfoPage extends BaseForm {
 		super(By.xpath("//table[@class='forumline message']"), "Info Page");
 	}
 
+	/*
+	 * Проверка наличия сообщения об удачной отправке сообщения
+	 */
 	public void isMessageSend() {
 		try {
 			Assert.assertTrue(lblInfo.getText().contains(SUCCESS_SEND));
@@ -31,6 +37,9 @@ public class InfoPage extends BaseForm {
 		}
 	}
 
+	/*
+	 * Проверка наличия сообщения об удачном удалении сообщений
+	 */
 	public void isMessagesDelete() {
 		try {
 			Assert.assertTrue(lblInfo.getText().contains(MESSAGES_DELETE));
@@ -44,6 +53,9 @@ public class InfoPage extends BaseForm {
 		btnOk.click();
 	}
 
+	/*
+	 * Проверка наличия предупреждения при удалении сообщений
+	 */
 	public void isConfirmDeleteMessages() {
 		Assert.assertTrue(lblInfo.getText().contains(CONFIRM_DELETE));
 	}
