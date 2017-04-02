@@ -27,8 +27,4 @@ public abstract class FileThruScripts {
 		}
 		return new ByteArrayInputStream(bytes);
 	}
-
-	public static void forceScripts() {
-
-	}
 }
