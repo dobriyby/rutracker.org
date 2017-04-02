@@ -49,7 +49,7 @@ public final class Logger {
 	public void infoLoc(final String msg) {
 		String message = localManager.getProperty(msg, msg);
 		logger.info(message);
-		Reporter.log(message);
+		Reporter.log(message+"<br>");
 	}
 
 	/**
@@ -198,7 +198,7 @@ public final class Logger {
 	 */
 	public void info(final String message) {
 		logger.info(message);
-		Reporter.log(message );
+		Reporter.log(message+"<br>");
 	}
 
 	/**
@@ -207,7 +207,7 @@ public final class Logger {
 	 */
 	public void warn(final String message) {
 		logger.warn(message);
-		Reporter.log(message);
+		Reporter.log(message+"<br>");
 	}
 
 
@@ -218,7 +218,7 @@ public final class Logger {
 	 */
 	public void error(final String message) {
 		logger.error(message);
-		Reporter.log(message);
+		Reporter.log(message+"<br>");
 	}
 
 	/**

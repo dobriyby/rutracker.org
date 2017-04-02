@@ -246,8 +246,8 @@
 				<version>2.16</version>
 				<configuration>
 				<argLine>-Dfile.encoding=UTF-8</argLine>
-					<!-- <systemPropertyVariables> <org.uncommons.reportng.escape-output>false</org.uncommons.reportng.escape-output> 
-						</systemPropertyVariables> -->
+					 <systemPropertyVariables> <org.uncommons.reportng.escape-output>false</org.uncommons.reportng.escape-output> 
+						</systemPropertyVariables> 
 					<suiteXmlFiles>
 						<suiteXmlFile>src/test/resources/TestSuite.xml</suiteXmlFile>
 					</suiteXmlFiles>

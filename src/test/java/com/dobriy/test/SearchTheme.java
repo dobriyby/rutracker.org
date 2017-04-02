@@ -52,7 +52,6 @@ public class SearchTheme extends BaseTest {
 	    trackerPage.header.exit();
 	    LoginPage loginPage = new LoginPage();
 		loginPage.isLoginForm();
-	    
 	}
 
 }
